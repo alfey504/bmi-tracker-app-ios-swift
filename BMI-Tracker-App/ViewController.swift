@@ -215,11 +215,5 @@ class ViewController: UIViewController {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "goToBmiListPage"){
-            let destinationVC = segue.destination as? BmiListViewController
-//            destinationVC?.bmiDataSource = self.bmiDataSource
-        }
-    }
 }
 

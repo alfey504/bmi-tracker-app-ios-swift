@@ -53,6 +53,10 @@ class BmiDataSource {
         return dataSource.count
     }
     
+    func deleteAt(at: Int){
+        dataSource.remove(at: at)
+    }
+    
     func saveData(){
         
         let userDefaults = UserDefaults.standard

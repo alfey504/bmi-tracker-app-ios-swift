@@ -134,11 +134,11 @@
 				F614A5342947D8FD0053DEF8 /* AppDelegate.swift */,
 				F614A5362947D8FD0053DEF8 /* SceneDelegate.swift */,
 				F614A5382947D8FD0053DEF8 /* ViewController.swift */,
+				F6ADA79F2948F5D70021207D /* BmiListViewController.swift */,
 				F614A53A2947D8FD0053DEF8 /* Main.storyboard */,
 				F614A53D2947D8FE0053DEF8 /* Assets.xcassets */,
 				F614A53F2947D8FE0053DEF8 /* LaunchScreen.storyboard */,
 				F614A5422947D8FE0053DEF8 /* Info.plist */,
-				F6ADA79F2948F5D70021207D /* BmiListViewController.swift */,
 			);
 			path = "BMI-Tracker-App";
 			sourceTree = "<group>";
