@@ -25,7 +25,9 @@ class BmiTableCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = .selectedBackGround
+        self.selectedBackgroundView = bgColorView
     }
     
     func populatTableCell(data: BmiData){
@@ -36,16 +38,20 @@ class BmiTableCell: UITableViewCell {
         weightLabel.text = data.getStringForWeight()
         bmiLabel.text = String(data.bmiScore)
         bmiClassLabel.text = data.bmiClass
+        bmiClassLabel.textColor = data.getColor()
     }
     
     private func concatinateNameAndGender(name: String, gender: String) -> String{
-        return((name + " . " + gender).uppercased())
+        var finalName = name
+        if(finalName.count > 12){
+            finalName = finalName.compactify(cuttOff: 12)
+        }
+        return((finalName + " . " + gender).uppercased())
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
+    
     
 }

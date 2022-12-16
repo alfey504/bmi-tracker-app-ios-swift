@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class BmiData {
     
@@ -51,6 +52,37 @@ class BmiData {
         }else{
             return(String(Int(round(self.weightInImperial))) + "lbs")
         }
+    }
+    
+    func getPreferedHeight() -> Float{
+        if(preferedUnit == BMIClalculator.METRIC){
+            return heightInMetric
+        }else{
+            return heightInImperial
+        }
+    }
+    
+    func getPreferedWeight() -> Float{
+        if(preferedUnit == BMIClalculator.METRIC){
+            return weightInMetric
+        }else{
+            return weightInImperial
+        }
+    }
+    
+    func getColor() -> UIColor{
+        if([BmiClass.NORMAL, BmiClass.MILD_THINNESS].contains(bmiClass)){
+            return .safeGreen
+        }
+        
+        if([BmiClass.OVERWEIGHT, BmiClass.MODEREATE_THINNESS].contains(bmiClass)){
+            return .dangerYellow
+        }
+        
+        if([BmiClass.SEVERE_THINESS, BmiClass.OBESE_CLASS_I, BmiClass.OBESE_CLASS_II, BmiClass.OBESE_CLASS_III].contains(bmiClass)){
+            return .dangerRed
+        }
+        return .red
     }
 
 }

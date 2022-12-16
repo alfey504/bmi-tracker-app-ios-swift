@@ -25,10 +25,6 @@ class BmiDataSource {
     
     var dataSource: Array<BmiData>
     
-    
-    
-    
-    
     init(){
         self.dataSource = Array<BmiData>()
     }
@@ -41,8 +37,13 @@ class BmiDataSource {
         if(dataSource.isEmpty){
             dataSource.append(data)
         }else{
-            dataSource.append(data)
+            dataSource.insert(data, at: 0)
         }
+    }
+    
+    func editDataAtSource(data: BmiData, at: Int){
+        dataSource.remove(at: at)
+        dataSource.insert(data, at: at)
     }
     
     func getDataAt(at: Int) -> BmiData {

@@ -1,13 +1,15 @@
 //
-//  ViewController.swift
+//  EditScreenViewController.swift
 //  BMI-Tracker-App
 //
-//  Created by Abraham Alfred Babu on 2022-12-12.
+//  Created by Abraham Alfred Babu on 2022-12-13.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class EditScreenViewController: UIViewController{
+ 
+    var editingId: Int? = 0
     
     @IBOutlet weak var nameTextField: UITextField!
     
@@ -28,20 +30,46 @@ class ViewController: UIViewController {
     @IBOutlet weak var bmiProgressBar: UIProgressView!
     
     @IBOutlet weak var resultCard: UIView!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     var genderSelectRadioGroup: RadioGroup!
     var bmiCalculator: BMIClalculator!
     
-    var bmiDataSource: BmiDataSource? = BmiDataSource()
+    var bmiDataSource: BmiDataSource = BmiDataSource()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         toggleMetricOrImplerialSwitch.set(width: 30, height: 18)
         
-        bmiDataSource!.loadData()
-        
+        bmiDataSource.loadData()
         makeRadioButton()
+        
+        populateViewOnLoad()
+    }
+    
+    private func populateViewOnLoad(){
+        let data = bmiDataSource.getDataAt(at: editingId!)
+        nameTextField.text = data.name
+        unitLabel.text = (data.preferedUnit == BMIClalculator.METRIC) ? "METRIC" : "IMPERIAL"
+        toggleMetricOrImplerialSwitch.isOn = (data.preferedUnit == BMIClalculator.METRIC) ? true : false
+        
+        heightTextField.text = String(data.getPreferedHeight())
+        weightTextField.text = String(data.getPreferedWeight())
+        
+        if(data.gender.lowercased() == "male"){
+            genderSelectRadioGroup.setButtonSelected(button: genderSelectMaleButton)
+        }else if(data.gender.lowercased() == "female"){
+            genderSelectRadioGroup.setButtonSelected(button: genderSelectFemaleButton)
+        }else{
+            genderSelectRadioGroup.setButtonSelected(button: genderSelectOtherButton)
+        }
+        
+        datePicker.date = data.dateTime
+        
+        bmiLabel.text = String(data.bmiScore)
+        bmiClassLabel.text = data.bmiClass
+        bmiProgressBar.progress = BMIClalculator.bmiPercent(bmi: data.bmiScore)
     }
     
     private func makeRadioButton(){
@@ -87,19 +115,19 @@ class ViewController: UIViewController {
     
     @IBAction func weightControlButtonPresses(_ sender: UIButton) {
         
-        var newWeight: Int = 0
+        var newWeight: Float = 0.0
         if(sender.tag == 2){
             if(weightTextField.text == ""){
                 newWeight = 1
             }else{
-                newWeight = Int(weightTextField.text!) ?? 0
+                newWeight = Float(weightTextField.text!) ?? 0
                 newWeight+=1;
             }
         }else if(sender.tag == 1){
             if(weightTextField.text == ""){
                 newWeight = 0
             }else{
-                newWeight = Int(weightTextField.text!) ?? 0
+                newWeight = Float(weightTextField.text!) ?? 0
                 if(newWeight != 0){
                     newWeight-=1;
                 }
@@ -128,6 +156,7 @@ class ViewController: UIViewController {
     }
     
     private func calculateBmi() -> Bool {
+        
         if(evaluateFields()){
             let height = Float(heightTextField.text!)
             let weight = Float(weightTextField.text!)
@@ -139,10 +168,8 @@ class ViewController: UIViewController {
             let bmi = bmiCalculator.getBmi()
             bmiLabel.text = String(bmi)
             bmiClassLabel.text = bmiCalculator.getBmiClass()
-            bmiClassLabel.textColor = bmiCalculator.getColor()
             bmiProgressBar.progress = BMIClalculator.bmiPercent(bmi: bmi)
             bmiProgressBar.progressTintColor = bmiCalculator.getColor()
-            
             return true
         }
         
@@ -195,7 +222,7 @@ class ViewController: UIViewController {
             name: name,
             gender: gender!,
             preferedUnit: bmiCalculator.preferedUnitType,
-            dateTime: Date(),
+            dateTime: datePicker.date,
             heightInMetric: bmiCalculator.heightInMetric!,
             heightInImperial: bmiCalculator.heightInImperial!,
             weightInMetric: bmiCalculator.weightInMetric!,
@@ -207,27 +234,25 @@ class ViewController: UIViewController {
     }
     
     
-    @IBAction func doneButtonPressed(_ sender: UIButton) {
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
         if(calculateBmi()){
             resultCard.isHidden = false
             let bmiData = makeBmiData()
-            bmiDataSource!.addDataToSource(data: bmiData)
-            bmiDataSource!.saveData()
-            addBadgeToHistoryItemInTabBar()
+            bmiDataSource.editDataAtSource(data: bmiData, at: editingId!)
+            bmiDataSource.saveData()
+            performSegue(withIdentifier: "goToMain", sender: self)
         }
     }
     
-    func addBadgeToHistoryItemInTabBar(){
-        let tabBar = self.tabBarController!.tabBar
-        let historyItem = tabBar.items![1]
-        historyItem.badgeColor = .red
-        historyItem.badgeValue = "1"
-        self.tabBarController!.selectedIndex = 1
+    
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "goToMain", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        self.dismiss(animated: true)
+        if(segue.identifier == "goToMain"){
+            let destinationVC = segue.destination as? CustomTabBarController
+            destinationVC!.comingFromEditScreen = true
+        }
     }
-    
 }
-

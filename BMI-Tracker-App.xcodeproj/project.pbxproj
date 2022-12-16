@@ -17,10 +17,14 @@
 		F614A5562947D8FE0053DEF8 /* BMI_Tracker_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F614A5552947D8FE0053DEF8 /* BMI_Tracker_AppUITests.swift */; };
 		F614A5582947D8FE0053DEF8 /* BMI_Tracker_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F614A5572947D8FE0053DEF8 /* BMI_Tracker_AppUITestsLaunchTests.swift */; };
 		F614A5662947E2FE0053DEF8 /* SwichtViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F614A5652947E2FE0053DEF8 /* SwichtViewModifier.swift */; };
+		F63BB2C4294ADA8300925231 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BB2C3294ADA8300925231 /* UIColorExtensions.swift */; };
+		F63BB2C6294AEF6100925231 /* GeadientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63BB2C5294AEF6100925231 /* GeadientView.swift */; };
+		F63D9D2029494F4E0070FAE3 /* EditScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63D9D1F29494F4E0070FAE3 /* EditScreenViewController.swift */; };
+		F63D9D222949C49C0070FAE3 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63D9D212949C49C0070FAE3 /* CustomTabBarController.swift */; };
 		F662176A29490014002FBD59 /* BmiData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662176929490014002FBD59 /* BmiData.swift */; };
 		F662176C294902D3002FBD59 /* BmiDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662176B294902D3002FBD59 /* BmiDataSource.swift */; };
 		F662176E294916A7002FBD59 /* DateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662176D294916A7002FBD59 /* DateModifier.swift */; };
-		F6ADA79129484DC50021207D /* NumberCheckOnString.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADA79029484DC50021207D /* NumberCheckOnString.swift */; };
+		F6ADA79129484DC50021207D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADA79029484DC50021207D /* StringExtensions.swift */; };
 		F6ADA79429485E710021207D /* BMICalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADA79329485E710021207D /* BMICalculator.swift */; };
 		F6ADA7972948635D0021207D /* BMICalculaotrError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADA7962948635D0021207D /* BMICalculaotrError.swift */; };
 		F6ADA79D2948F4DB0021207D /* BmiTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ADA79B2948F4DB0021207D /* BmiTableCell.swift */; };
@@ -63,10 +67,14 @@
 		F614A5552947D8FE0053DEF8 /* BMI_Tracker_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMI_Tracker_AppUITests.swift; sourceTree = "<group>"; };
 		F614A5572947D8FE0053DEF8 /* BMI_Tracker_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMI_Tracker_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F614A5652947E2FE0053DEF8 /* SwichtViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwichtViewModifier.swift; sourceTree = "<group>"; };
+		F63BB2C3294ADA8300925231 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		F63BB2C5294AEF6100925231 /* GeadientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeadientView.swift; sourceTree = "<group>"; };
+		F63D9D1F29494F4E0070FAE3 /* EditScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScreenViewController.swift; sourceTree = "<group>"; };
+		F63D9D212949C49C0070FAE3 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		F662176929490014002FBD59 /* BmiData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BmiData.swift; sourceTree = "<group>"; };
 		F662176B294902D3002FBD59 /* BmiDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BmiDataSource.swift; sourceTree = "<group>"; };
 		F662176D294916A7002FBD59 /* DateModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModifier.swift; sourceTree = "<group>"; };
-		F6ADA79029484DC50021207D /* NumberCheckOnString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberCheckOnString.swift; sourceTree = "<group>"; };
+		F6ADA79029484DC50021207D /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		F6ADA79329485E710021207D /* BMICalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMICalculator.swift; sourceTree = "<group>"; };
 		F6ADA7962948635D0021207D /* BMICalculaotrError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMICalculaotrError.swift; sourceTree = "<group>"; };
 		F6ADA79B2948F4DB0021207D /* BmiTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BmiTableCell.swift; sourceTree = "<group>"; };
@@ -139,6 +147,8 @@
 				F614A53D2947D8FE0053DEF8 /* Assets.xcassets */,
 				F614A53F2947D8FE0053DEF8 /* LaunchScreen.storyboard */,
 				F614A5422947D8FE0053DEF8 /* Info.plist */,
+				F63D9D1F29494F4E0070FAE3 /* EditScreenViewController.swift */,
+				F63D9D212949C49C0070FAE3 /* CustomTabBarController.swift */,
 			);
 			path = "BMI-Tracker-App";
 			sourceTree = "<group>";
@@ -165,8 +175,9 @@
 			children = (
 				F614A5652947E2FE0053DEF8 /* SwichtViewModifier.swift */,
 				F6AE6C1E2948296E004F86CF /* UIButtonAsRadioButton.swift */,
-				F6ADA79029484DC50021207D /* NumberCheckOnString.swift */,
+				F6ADA79029484DC50021207D /* StringExtensions.swift */,
 				F662176D294916A7002FBD59 /* DateModifier.swift */,
+				F63BB2C3294ADA8300925231 /* UIColorExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -210,6 +221,7 @@
 			children = (
 				F6AE6C1C29482742004F86CF /* RadioButton.swift */,
 				F6AE6C202948320B004F86CF /* RadioGroup.swift */,
+				F63BB2C5294AEF6100925231 /* GeadientView.swift */,
 			);
 			path = CustomComponents;
 			sourceTree = "<group>";
@@ -355,12 +367,16 @@
 				F6AE6C1F2948296E004F86CF /* UIButtonAsRadioButton.swift in Sources */,
 				F6ADA7A02948F5D70021207D /* BmiListViewController.swift in Sources */,
 				F662176A29490014002FBD59 /* BmiData.swift in Sources */,
+				F63BB2C6294AEF6100925231 /* GeadientView.swift in Sources */,
+				F63BB2C4294ADA8300925231 /* UIColorExtensions.swift in Sources */,
 				F6ADA79429485E710021207D /* BMICalculator.swift in Sources */,
 				F6AE6C212948320B004F86CF /* RadioGroup.swift in Sources */,
 				F614A5372947D8FD0053DEF8 /* SceneDelegate.swift in Sources */,
+				F63D9D222949C49C0070FAE3 /* CustomTabBarController.swift in Sources */,
 				F614A5662947E2FE0053DEF8 /* SwichtViewModifier.swift in Sources */,
 				F6ADA79D2948F4DB0021207D /* BmiTableCell.swift in Sources */,
-				F6ADA79129484DC50021207D /* NumberCheckOnString.swift in Sources */,
+				F63D9D2029494F4E0070FAE3 /* EditScreenViewController.swift in Sources */,
+				F6ADA79129484DC50021207D /* StringExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,8 +551,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SS742B69L7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "BMI-Tracker-App/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
@@ -564,8 +582,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SS742B69L7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "BMI-Tracker-App/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";

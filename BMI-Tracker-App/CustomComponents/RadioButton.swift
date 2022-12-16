@@ -20,7 +20,6 @@ class RadioButton{
         self.buttonArea = buttonView
         for child in self.buttonArea.subviews{
             if(child is UIButton){
-                print("child")
                 self.button = child as? UIButton
             }
             if(child is UILabel){
@@ -43,10 +42,8 @@ class RadioButton{
     func compareButton(button: UIView) -> Bool{
         print(button.tag)
         if(button == self.buttonArea){
-            print("Hey true")
             return true
         }else{
-            print("Hey False")
             return false
         }
     }
