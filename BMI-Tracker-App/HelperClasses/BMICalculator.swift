@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// some defuault values for bmiClass member
 struct BmiClass{
     static let SEVERE_THINESS = "SEVERE THINNESS"
     static let MODEREATE_THINNESS = "MODEREATE THINNESS"
@@ -21,9 +22,11 @@ struct BmiClass{
 
 class BMIClalculator{
     
+    // default values
     static let METRIC = 1
     static let IMPERIAL = 2
     
+    // member variables
     var heightInMetric: Float?
     var weightInMetric: Float?
     
@@ -35,6 +38,7 @@ class BMIClalculator{
     var bmi: Float?
     var bmiClass: String?
     
+    // constructors
     init(height: Float, weight: Float, preferedUnitType: Int) {
         
         self.preferedUnitType = preferedUnitType
@@ -49,6 +53,7 @@ class BMIClalculator{
         }
     }
     
+    // calculates and returns the bmi
     func getBmi() -> Float{
         let bmi = self.weightInMetric! / (self.heightInMetric! * self.heightInMetric!)
         self.bmi = round(bmi * 10) / 10
@@ -56,6 +61,7 @@ class BMIClalculator{
         return self.bmi!
     }
     
+    // calculates the bmi class
     private func calculateBmiClass(){
         if(self.bmi! < 16){
             self.bmiClass = BmiClass.SEVERE_THINESS
@@ -76,10 +82,12 @@ class BMIClalculator{
         }
     }
     
+    // returns bmiClass
     func getBmiClass() -> String {
         return self.bmiClass!
     }
     
+    // static function to calculate bmi Percentage for progress bar
     static func bmiPercent(bmi: Float) -> Float {
         let percent = (bmi - 10.0) / (50.0 - 10.0)
         if(percent < 0){
@@ -90,17 +98,19 @@ class BMIClalculator{
         return percent
     }
     
+    // converts metric to imperial
     func calculateImperialFromMetric() {
         self.heightInImperial = self.heightInMetric! * 3.281
         self.weightInImperial = self.weightInMetric! / 0.45359237
     }
     
-    
+    // converts imperial to metric
     func calculateMetricFromImperial(){
         self.heightInMetric = self.heightInImperial! / 3.281
         self.weightInMetric = self.weightInImperial! * 0.45359237
     }
     
+    // returns a UIColor based on bmiClass
     func getColor() -> UIColor{
         if(bmiClass == BmiClass.NORMAL){
             return .safeGreen
@@ -116,6 +126,7 @@ class BMIClalculator{
         return .red
     }
     
+    // staic function that returns color based on the given BmiClass
     static func findColor(bmiClass: String) -> UIColor{
         if(bmiClass == BmiClass.NORMAL){
             return .safeGreen

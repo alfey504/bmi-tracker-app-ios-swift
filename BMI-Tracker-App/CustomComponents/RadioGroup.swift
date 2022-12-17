@@ -8,22 +8,25 @@
 import Foundation
 import UIKit
 
+// Class to handle muliple radioButtons
 class RadioGroup{
-
+    
     var radioButtons: Array<RadioButton>
     
+    // constructor
     init(){
         radioButtons = Array<RadioButton>()
     }
     
+    // add the given button to a RadioGroup
     func addButtonToGroup(button: RadioButton){
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_ :)))
         button.buttonArea.addGestureRecognizer(tapRecognizer)
         radioButtons.append(button)
     }
     
+    // set the given UIView as the selected button
     func setButtonSelected(button: UIView){
-        print("wassup")
         for radioButton in radioButtons{
             if(radioButton.compareButton(button: button)){
                 radioButton.setButtonSelected(selected: true)
@@ -33,6 +36,7 @@ class RadioGroup{
         }
     }
     
+    // check if any of the radio button is selected
     func isSelected() -> Bool {
         for radioButton in radioButtons {
             if(radioButton.buttonSelected){
@@ -42,6 +46,7 @@ class RadioGroup{
         return false
     }
     
+    // returns the slected radio button
     func getSelected() -> RadioButton?{
         for radioButton in radioButtons {
             if(radioButton.buttonSelected){
@@ -51,6 +56,7 @@ class RadioGroup{
         return nil
     }
     
+    // handles tap on a radio button
     @objc func handleTap(_ sender: UITapGestureRecognizer){
         let sourceView = sender.view! as UIView
         self.setButtonSelected(button: sourceView)

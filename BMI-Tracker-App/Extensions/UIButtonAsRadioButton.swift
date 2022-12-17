@@ -10,6 +10,7 @@ import UIKit
  
 extension UIButton {
     
+    // make the UIButton appear as radio button
     func setSelected(selected: Bool){
         if(selected){
             let color = UIColor(red: 4/255, green: 76/255, blue: 92/255, alpha: 1)

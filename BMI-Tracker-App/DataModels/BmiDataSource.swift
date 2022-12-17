@@ -21,10 +21,12 @@ struct UserDefalutKeys{
     
 }
 
+// data source that holds the data
 class BmiDataSource {
     
     var dataSource: Array<BmiData>
     
+    // constructors
     init(){
         self.dataSource = Array<BmiData>()
     }
@@ -33,6 +35,8 @@ class BmiDataSource {
         self.dataSource = dataSource
     }
     
+    
+    // adds a data to the front of Array
     func addDataToSource(data: BmiData){
         if(dataSource.isEmpty){
             dataSource.append(data)
@@ -41,23 +45,28 @@ class BmiDataSource {
         }
     }
     
+    // replace data at index
     func editDataAtSource(data: BmiData, at: Int){
         dataSource.remove(at: at)
         dataSource.insert(data, at: at)
     }
     
+    // returns data at index
     func getDataAt(at: Int) -> BmiData {
         return dataSource[at]
     }
     
+    // returns the size of dataSoruce
     func size() -> Int{
         return dataSource.count
     }
     
+    // delete data at index
     func deleteAt(at: Int){
         dataSource.remove(at: at)
     }
     
+    // saves data using UserDefaults
     func saveData(){
         
         let userDefaults = UserDefaults.standard
@@ -104,6 +113,7 @@ class BmiDataSource {
         userDefaults.set(bmiClasses, forKey: UserDefalutKeys.BMI_CLASSES)
     }
     
+    // Loads data from useDefaults
     func loadData() {
         
         var tempDataSource:Array<BmiData> = []

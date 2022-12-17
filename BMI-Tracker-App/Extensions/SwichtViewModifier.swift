@@ -9,6 +9,7 @@ import UIKit
 
 extension UISwitch {
     
+    // resize the switch view
     func set(width: CGFloat, height: CGFloat) {
 
             let standardHeight: CGFloat = 31

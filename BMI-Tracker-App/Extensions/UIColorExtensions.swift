@@ -10,6 +10,8 @@ import UIKit
 
 extension UIColor {
     
+    //  some extended color set for UIColor Class
+    
     static var dangerRed: UIColor {
         return UIColor(red: 255/255, green: 37/255, blue: 17/255, alpha: 1)
     }

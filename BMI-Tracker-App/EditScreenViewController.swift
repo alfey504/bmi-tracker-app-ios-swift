@@ -3,14 +3,22 @@
 //  BMI-Tracker-App
 //
 //  Created by Abraham Alfred Babu on 2022-12-13.
+//  Student id  : 301270598
 //
+//  Desciprtion
+//  _________________________________________________
+//  A simple app that lets you calculate your bmi and
+//  save it for later viewing and tracking purpose. It
+//  also allows you to edit and delete previous entries
 
 import UIKit
 
 class EditScreenViewController: UIViewController{
- 
+    
+    // for knowing which index in data source we are editing
     var editingId: Int? = 0
     
+    // references to all the UI Element
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var toggleMetricOrImplerialSwitch: UISwitch!
@@ -48,6 +56,7 @@ class EditScreenViewController: UIViewController{
         populateViewOnLoad()
     }
     
+    // populate the UIfiled with data from source
     private func populateViewOnLoad(){
         let data = bmiDataSource.getDataAt(at: editingId!)
         nameTextField.text = data.name
@@ -72,6 +81,7 @@ class EditScreenViewController: UIViewController{
         bmiProgressBar.progress = BMIClalculator.bmiPercent(bmi: data.bmiScore)
     }
     
+    // add all the radio buttonViews to Radio Group Custom Class
     private func makeRadioButton(){
         genderSelectRadioGroup = RadioGroup()
         let genderSelectMaleRadioButton = RadioButton(buttonView: genderSelectMaleButton, buttonSelected: false)
@@ -82,6 +92,7 @@ class EditScreenViewController: UIViewController{
         genderSelectRadioGroup.addButtonToGroup(button: genderSelectOtherRadioButton)
     }
     
+    // set status bar white
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
@@ -90,7 +101,7 @@ class EditScreenViewController: UIViewController{
         .lightContent
     }
     
-
+    // handle control button on height input
     @IBAction func heighControlButtonsPressed(_ sender: UIButton) {
         var newHeight: Float = 0
         if(sender.tag == 2){
@@ -113,6 +124,7 @@ class EditScreenViewController: UIViewController{
         heightTextField.text? = String(newHeight)
     }
     
+    // handle control button on weight input
     @IBAction func weightControlButtonPresses(_ sender: UIButton) {
         
         var newWeight: Float = 0.0
@@ -136,6 +148,7 @@ class EditScreenViewController: UIViewController{
         weightTextField.text? = String(newWeight)
     }
     
+    // handle unit change on UI switch
     @IBAction func unitChanged(_ sender: UISwitch) {
         if(sender.isOn){
             unitLabel.text = "METRIC"
@@ -148,13 +161,14 @@ class EditScreenViewController: UIViewController{
         }
     }
     
-    
+    // when calculate button is pressed
     @IBAction func calculateButtonPressed(_ sender: Any) {
         if(calculateBmi()){
             resultCard.isHidden = false
         }
     }
     
+    // calculates the bmi and returns true if successfuls
     private func calculateBmi() -> Bool {
         
         if(evaluateFields()){
@@ -176,6 +190,7 @@ class EditScreenViewController: UIViewController{
         return false
     }
     
+    // evaluate all the input fields
     private func evaluateFields() -> Bool{
         
         if(nameTextField.text == ""){
@@ -201,6 +216,7 @@ class EditScreenViewController: UIViewController{
         return true
     }
     
+    // show a UIAlertBox with given message and an OK button
     private func makeAlertWithOkButton(message: String, view: UIView?){
         let dialogMessage = UIAlertController(title: "Issues", message: message, preferredStyle: .alert)
         
@@ -214,6 +230,7 @@ class EditScreenViewController: UIViewController{
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
+    // returns an instance of BmiData with data from data fields
     private func makeBmiData() -> BmiData{
         let name = nameTextField.text!
         let gender = genderSelectRadioGroup.getSelected()!.text
@@ -233,7 +250,7 @@ class EditScreenViewController: UIViewController{
         return bmiData
     }
     
-    
+    // saves the data and segue to Bmi list screen
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if(calculateBmi()){
             resultCard.isHidden = false
@@ -244,12 +261,14 @@ class EditScreenViewController: UIViewController{
         }
     }
     
-    
+    // segue to bmi list Screen without doing anthing
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "goToMain", sender: self)
     }
     
+    //prepare for segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // notify the tabbar controller the we are coming from edit screen
         if(segue.identifier == "goToMain"){
             let destinationVC = segue.destination as? CustomTabBarController
             destinationVC!.comingFromEditScreen = true

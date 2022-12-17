@@ -3,12 +3,19 @@
 //  BMI-Tracker-App
 //
 //  Created by Abraham Alfred Babu on 2022-12-12.
+//  Student id  : 301270598
 //
+//  Desciprtion
+//  _________________________________________________
+//  A simple app that lets you calculate your bmi and
+//  save it for later viewing and tracking purpose. It
+//  also allows you to edit and delete previous entries
 
 import UIKit
 
 class ViewController: UIViewController {
     
+    // creating references for the UI Elements
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var toggleMetricOrImplerialSwitch: UISwitch!
@@ -44,6 +51,7 @@ class ViewController: UIViewController {
         makeRadioButton()
     }
     
+    // add all the radio buttonViews to Radio Group Custom Class
     private func makeRadioButton(){
         genderSelectRadioGroup = RadioGroup()
         let genderSelectMaleRadioButton = RadioButton(buttonView: genderSelectMaleButton, buttonSelected: false)
@@ -54,15 +62,19 @@ class ViewController: UIViewController {
         genderSelectRadioGroup.addButtonToGroup(button: genderSelectOtherRadioButton)
     }
     
+    
+    // set the status bar to white
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
+        bmiDataSource!.loadData()
     }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         .lightContent
     }
     
-
+    // handle control button on height input
     @IBAction func heighControlButtonsPressed(_ sender: UIButton) {
         var newHeight: Float = 0
         if(sender.tag == 2){
@@ -85,6 +97,7 @@ class ViewController: UIViewController {
         heightTextField.text? = String(newHeight)
     }
     
+    // handle control button on weight input
     @IBAction func weightControlButtonPresses(_ sender: UIButton) {
         
         var newWeight: Int = 0
@@ -108,6 +121,7 @@ class ViewController: UIViewController {
         weightTextField.text? = String(newWeight)
     }
     
+    // handle unit change on UI switch
     @IBAction func unitChanged(_ sender: UISwitch) {
         if(sender.isOn){
             unitLabel.text = "METRIC"
@@ -121,12 +135,14 @@ class ViewController: UIViewController {
     }
     
     
+    // when calculate button is pressed
     @IBAction func calculateButtonPressed(_ sender: Any) {
         if(calculateBmi()){
             resultCard.isHidden = false
         }
     }
     
+    // calculates the bmi and returns true if successfuls
     private func calculateBmi() -> Bool {
         if(evaluateFields()){
             let height = Float(heightTextField.text!)
@@ -139,7 +155,6 @@ class ViewController: UIViewController {
             let bmi = bmiCalculator.getBmi()
             bmiLabel.text = String(bmi)
             bmiClassLabel.text = bmiCalculator.getBmiClass()
-            bmiClassLabel.textColor = bmiCalculator.getColor()
             bmiProgressBar.progress = BMIClalculator.bmiPercent(bmi: bmi)
             bmiProgressBar.progressTintColor = bmiCalculator.getColor()
             
@@ -149,6 +164,7 @@ class ViewController: UIViewController {
         return false
     }
     
+    // evaluate all the input fields
     private func evaluateFields() -> Bool{
         
         if(nameTextField.text == ""){
@@ -174,6 +190,7 @@ class ViewController: UIViewController {
         return true
     }
     
+    // show a UIAlertBox with given message and an OK button
     private func makeAlertWithOkButton(message: String, view: UIView?){
         let dialogMessage = UIAlertController(title: "Issues", message: message, preferredStyle: .alert)
         
@@ -187,6 +204,7 @@ class ViewController: UIViewController {
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
+    // returns an instance of BmiData with data from data fields
     private func makeBmiData() -> BmiData{
         let name = nameTextField.text!
         let gender = genderSelectRadioGroup.getSelected()!.text
@@ -206,7 +224,7 @@ class ViewController: UIViewController {
         return bmiData
     }
     
-    
+    // saves the data and segue to Bmi list screen
     @IBAction func doneButtonPressed(_ sender: UIButton) {
         if(calculateBmi()){
             resultCard.isHidden = false
@@ -217,6 +235,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // adds a badge to Bmi List page item (not necessary for learning purpose)
     func addBadgeToHistoryItemInTabBar(){
         let tabBar = self.tabBarController!.tabBar
         let historyItem = tabBar.items![1]
@@ -224,10 +243,7 @@ class ViewController: UIViewController {
         historyItem.badgeValue = "1"
         self.tabBarController!.selectedIndex = 1
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        self.dismiss(animated: true)
-    }
+
     
 }
 

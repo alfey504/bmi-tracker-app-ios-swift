@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+// Class that coverts a UIView with a button and a Text to Radio Button
+
 class RadioButton{
     
     var buttonSelected: Bool
@@ -15,6 +17,7 @@ class RadioButton{
     private var button: UIButton?
     var text: String?
     
+    // constructor
     init(buttonView:UIView, buttonSelected: Bool){
         self.buttonSelected = buttonSelected
         self.buttonArea = buttonView
@@ -30,15 +33,18 @@ class RadioButton{
         self.updateButton()
     }
     
+    // sets the button as selected
     func setButtonSelected(selected: Bool){
         self.buttonSelected = selected
         self.updateButton()
     }
     
+    // update thr button in UIView  to selected
     func updateButton(){
         self.button?.setSelected(selected: self.buttonSelected)
     }
     
+    // check if the given UIView is same as self
     func compareButton(button: UIView) -> Bool{
         print(button.tag)
         if(button == self.buttonArea){

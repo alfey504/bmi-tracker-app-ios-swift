@@ -9,8 +9,10 @@ import UIKit
 
 class BmiTableCell: UITableViewCell {
     
+    // identifier for the cell
     static let identifier = "bmiTableCell"
     
+    // reference to the UIElements
     @IBOutlet weak var nameAndGenderLabel: UILabel!
     @IBOutlet weak var preferedUnitLabel: UILabel!
     @IBOutlet weak var dateTimeLabel: UILabel!
@@ -19,17 +21,21 @@ class BmiTableCell: UITableViewCell {
     @IBOutlet weak var bmiLabel: UILabel!
     @IBOutlet weak var bmiClassLabel: UILabel!
     
+    // returns UINib for the table cell
     static func nib()->UINib{
         return UINib(nibName: "BmiTableCell", bundle: nil)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        // set background color on select
         let bgColorView = UIView()
         bgColorView.backgroundColor = .selectedBackGround
         self.selectedBackgroundView = bgColorView
     }
     
+    // populates the cell with given data
     func populatTableCell(data: BmiData){
         nameAndGenderLabel.text = concatinateNameAndGender(name: data.name, gender: data.gender)
         preferedUnitLabel.text = (data.preferedUnit == BMIClalculator.METRIC) ? "METRIC" : "IMPERIAL"
@@ -41,6 +47,7 @@ class BmiTableCell: UITableViewCell {
         bmiClassLabel.textColor = data.getColor()
     }
     
+    // concatinate name and gender to give NAME.GENDER
     private func concatinateNameAndGender(name: String, gender: String) -> String{
         var finalName = name
         if(finalName.count > 12){
@@ -48,7 +55,8 @@ class BmiTableCell: UITableViewCell {
         }
         return((finalName + " . " + gender).uppercased())
     }
-
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
